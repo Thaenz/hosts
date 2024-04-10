@@ -5,6 +5,8 @@ BLOCKLISTS = unity steven danhorton7 zerodot1 \
 rgh = https://raw.githubusercontent.com
 gl  = https://gitlab.com
 
+.PHONY: release clean
+
 hosts: $(addprefix $(TMP)/,$(addsuffix .hosts,$(BLOCKLISTS)))
 	cp -f hosts.in hosts
 	# patching...
@@ -17,7 +19,7 @@ hosts: $(addprefix $(TMP)/,$(addsuffix .hosts,$(BLOCKLISTS)))
 		sed 's/[ \t]*$$//' | \
 		sort -u >> hosts
 
-.PHONY: clean
+release: hosts; gzip -f hosts
 clean:; rm '$(TMP)'/*.hosts
 
 $(TMP)/unity.hosts:
