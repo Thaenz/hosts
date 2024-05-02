@@ -1,0 +1,30 @@
+name: weekly release
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: '0 6 * * 0'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install guix
+        run: sudo apt install guix
+
+      - name: compile
+        run: make release
+
+      - name: create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v$(date +'%d-%m-%Y')" \
+             --title "$(date +'%d-%m-%Y')" \
+             --notes "guix hash: $(guix hash hosts.gz)" \
+             hosts.gz
