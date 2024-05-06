@@ -2,7 +2,7 @@
 
 ## getting started
 
-edit <VERSION DATE> and <GUIX HASH> to the newest release
+edit `<VERSION DATE>` and `<GUIX HASH>` to the newest release
 
 ```scm
 (define-module (packages hosts)
