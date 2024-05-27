@@ -18,7 +18,7 @@ jobs:
         run: sudo apt install guix
 
       - name: compile
-        run: make release
+        run: make update
 
       - name: create release
         env:

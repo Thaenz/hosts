@@ -20,6 +20,12 @@ hosts: $(addprefix $(TMP)/,$(addsuffix .hosts,$(BLOCKLISTS)))
 		sort -u >> hosts
 
 release: hosts; gzip -f hosts
+update: release
+	sed -i "s/(version \".*\"/(version \""$$(date +'%d-%m-%Y')"\"/" \
+		gatekeeper/hosts.scm
+	sed -i "s/(base32 \".*\"/(base32 \""$$(guix hash hosts.gz)"\"/" \
+		gatekeeper/hosts.scm
+
 clean:; rm '$(TMP)'/*.hosts
 
 $(TMP)/unity.hosts:
