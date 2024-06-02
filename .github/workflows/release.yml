@@ -11,6 +11,10 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+
+    env:
+      CI_COMMIT_AUTHOR: Continuous Integration
+
     steps:
       - uses: actions/checkout@v4
 
@@ -19,6 +23,13 @@ jobs:
 
       - name: compile
         run: make update
+
+      - name: commit & push
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "thaenz@pm.me"
+          git commit -am 'update hosts.scm'
+          git push
 
       - name: create release
         env:
