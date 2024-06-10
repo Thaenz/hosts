@@ -1,9 +1,7 @@
 (define-module (gatekeeper hosts)
   #:use-module (guix packages)
   #:use-module (guix download)
-  #:use-module (guix build-system copy)
-
-  #:export (gatekeeper-hosts))
+  #:use-module (guix build-system copy))
 
 (define-public gatekeeper-hosts
   (package
