@@ -1,5 +1,5 @@
 TMP        = tmp
-BLOCKLISTS = unity steven danhorton7 zerodot1 \
+BLOCKLISTS = unity steven danhorton7 \
 	     blp-ads blp-tiktok blp-tracking
 
 rgh = https://raw.githubusercontent.com
