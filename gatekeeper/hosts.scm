@@ -6,14 +6,14 @@
 (define-public gatekeeper-hosts
   (package
     (name "gatekeeper-hosts")
-    (version "03-05-2026")
+    (version "10-05-2026")
     (source (origin
       (method url-fetch)
       (uri (string-append
 	"https://github.com/Thaenz/hosts/releases/download/v" version
 	"/hosts.gz"))
       (sha256
-	(base32 "0q7mg4a73fcy06bsbgb5dz8sb27v2j59yfwzm7kbva6dq05a7gax"))))
+	(base32 "01ljl2bc68bw9zfydc5sv22wy5ap4s6vrqz5w5jba0bmp5z0d9nv"))))
     (build-system copy-build-system)
     (home-page "https://github.com/Thaenz/hosts")
     (synopsis "My massive hosts list")
